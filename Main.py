@@ -6,5 +6,4 @@ def main():
     app = Interface()
     janela.mainloop()
 
-
 main()

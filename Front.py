@@ -5,77 +5,78 @@ from tkinter import messagebox
 from Agenda import Agenda
 from Pessoa import Pessoa
 
-# Cores
-white = "#FFFFFF"
-amarelinho = "#FFFFE0"
-verdinho = "#a3ffac"
-roxinho = "#dfcae1"
-rosinha = "#fabfb7"
-azulzinho = "#b2e2f2"
-laranjinha = "#ffda9e"
-
 class Interface:
+
+
     def __init__(self):
         # Criando uma instância da classe Agenda
         self.minha_agenda = Agenda()
+            # Cores
+        self.branquinho = "#FFFFFF"
+        self.amarelinho = "#FFFFE0"
+        self.verdinho = "#a3ffac"
+        self.roxinho = "#dfcae1"
+        self.rosinha = "#fabfb7"
+        self.azulzinho = "#b2e2f2"
+        self.laranjinha = "#ffda9e"
 
         # Criando a janela
         janela = Tk()
         janela.title("MINHA AGENDA")
         janela.geometry('600x600')
-        janela.configure(background=amarelinho)
+        janela.configure(background=self.amarelinho)
         janela.resizable(width=FALSE, height=FALSE)
         #janela.iconbitmap("icon.ico")
 
         # Frames
-        frame_cima = Frame(janela, width=600, height=60, bg=laranjinha, relief="flat")
+        frame_cima = Frame(janela, width=600, height=60, bg=self.laranjinha, relief="flat")
         frame_cima.grid(row=0, column=0, pady=1, padx=0, sticky=NSEW)
 
-        frame_baixo = Frame(janela, width=600, height=150, bg=amarelinho, relief="flat")
+        frame_baixo = Frame(janela, width=600, height=150, bg=self.amarelinho, relief="flat")
         frame_baixo.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 
-        frame_tabela = Frame(janela, width=600, height=248, bg=white, relief="flat")
+        frame_tabela = Frame(janela, width=600, height=248, bg=self.branquinho, relief="flat")
         frame_tabela.grid(row=2, column=0, columnspan=2, padx=10, sticky=NSEW)
 
-        title = Label(frame_cima, text='CONTATOS', anchor=NE, font=('candara 25 bold'), bg=laranjinha, fg="#fa8072")
+        title = Label(frame_cima, text='CONTATOS', anchor=NE, font=('candara 25 bold'), bg=self.laranjinha, fg="#fa8072")
         title.place(x=230, y=7)
 
         # Campos de entrada
-        name = Label(frame_baixo, text="NOME: ", font="Calibri 10 bold", bg=amarelinho)
+        name = Label(frame_baixo, text="NOME: ", font="Calibri 10 bold", bg=self.amarelinho)
         name.place(x=1, y=10)
         self.nomeContato = Entry(frame_baixo, width=30, font=('roboto', 10))
         self.nomeContato.place(x=65, y=10)
 
-        sex = Label(frame_baixo, text="SEXO: ", font="Calibri 10 bold", bg=amarelinho)
+        sex = Label(frame_baixo, text="SEXO: ", font="Calibri 10 bold", bg=self.amarelinho)
         sex.place(x=300, y=10)
         self.sexoContato = Entry(frame_baixo, width=30, font=('roboto', 10))
         self.sexoContato.place(x=350, y=10)
 
-        fone = Label(frame_baixo, text="TELEFONE: ", font="Calibri 10 bold", bg=amarelinho)
+        fone = Label(frame_baixo, text="TELEFONE: ", font="Calibri 10 bold", bg=self.amarelinho)
         fone.place(x=1, y=40)
         self.telefoneContato = Entry(frame_baixo, width=30, font=('roboto', 10))
         self.telefoneContato.place(x=65, y=40)
 
-        mail = Label(frame_baixo, text="EMAIL: ", font="Calibri 10 bold", bg=amarelinho)
+        mail = Label(frame_baixo, text="EMAIL: ", font="Calibri 10 bold", bg=self.amarelinho)
         mail.place(x=300, y=40)
         self.emailContato = Entry(frame_baixo, width=30, font=('roboto', 10))
         self.emailContato.place(x=350, y=40)
 
         # Campo de busca
-        Label(frame_baixo, text='BUSCAR POR NOME:', font=('Calibri 10 bold'), bg=amarelinho, fg='black').place(x=80, y=70)
+        Label(frame_baixo, text='BUSCAR POR NOME:', font=('Calibri 10 bold'), bg=self.amarelinho, fg='black').place(x=80, y=70)
         self.nomeBusca = Entry(frame_baixo, width=30, font=('roboto', 10))
         self.nomeBusca.place(x=210, y=70)
 
         # Botões
-        Button(frame_baixo, text='ADICIONAR', font=('roboto 10 bold'), bg=verdinho, fg='black', relief=RAISED,
+        Button(frame_baixo, text='ADICIONAR', font=('roboto 10 bold'), bg=self.verdinho, fg='black', relief=RAISED,
                overrelief=GROOVE, command=self.adicionar_contato).place(x=60, y=105)
-        Button(frame_baixo, text='BUSCAR', font=('roboto 10 bold'), bg=roxinho, fg='black', relief=RAISED,
+        Button(frame_baixo, text='BUSCAR', font=('roboto 10 bold'), bg=self.roxinho, fg='black', relief=RAISED,
                overrelief=GROOVE, command=self.buscar_contato).place(x=180, y=105)
-        Button(frame_baixo, text='EDITAR', font=('roboto 10 bold'), bg=laranjinha, fg='black', relief=RAISED,
+        Button(frame_baixo, text='EDITAR', font=('roboto 10 bold'), bg=self.laranjinha, fg='black', relief=RAISED,
                overrelief=GROOVE, command=self.editar_contato).place(x=275, y=105)
-        Button(frame_baixo, text='EXCLUIR', font=('roboto 10 bold'), bg=rosinha, fg='black', relief=RAISED,
+        Button(frame_baixo, text='EXCLUIR', font=('roboto 10 bold'), bg=self.rosinha, fg='black', relief=RAISED,
                overrelief=GROOVE, command=self.excluir_contato).place(x=370, y=105)
-        Button(frame_baixo, text='LISTAR', font=('roboto 10 bold'), bg=azulzinho, fg='black', relief=RAISED,
+        Button(frame_baixo, text='LISTAR', font=('roboto 10 bold'), bg=self.azulzinho, fg='black', relief=RAISED,
                overrelief=GROOVE, command=self.listar_contatos).place(x=470, y=105)
 
         # Tabela
@@ -97,7 +98,7 @@ class Interface:
         self.tree.column(3, width=120, anchor='nw')
 
         #imgcontatos = PhotoImage(file="contatos.png")
-        #painel = Label(janela, image=imgcontatos, bg=amarelinho)
+        #painel = Label(janela, image=imgcontatos, bg=self.amarelinho)
         #painel.place(x=250, y=470)
 
         janela.mainloop()
@@ -171,7 +172,7 @@ class Interface:
                 nomeEditar.insert(0, contato_selecionado.nome)
                 nomeEditar.pack()
 
-                sexoEditar = Entry(editar_janela, width=28, font=('roboto', 10))
+                sexoEditar = Entry(editar_janela, width=30, font=('roboto', 10))
                 sexoEditar.insert(0, contato_selecionado.nome)
                 sexoEditar.pack()
 
@@ -192,7 +193,7 @@ class Interface:
                     self.atualizar_treeview()
                     editar_janela.destroy()
 
-                Button(editar_janela, text='SALVAR', font=('roboto 10 bold'), bg=verdinho, fg='black',
+                Button(editar_janela, text='SALVAR', font=('roboto 10 bold'), bg=self.verdinho, fg='black',
                        relief=RAISED, overrelief=GROOVE, command=salvar_edicao).pack()
 
     # Função para listar contatos
